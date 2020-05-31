@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title id="title"></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;" />
+
+    <!-- Bootstrap -->
+    <link href="./assets/css/bootstrap.min.css" rel="stylesheet">
+    <!-- custom css -->
+    <!-- <link rel="stylesheet" href="./assets/css/custom.css"> -->
+</head>
+
+<body style="background-color: #FED601;">
+    <script language="JavaScript">
+        function openLogin() {
+            if (window.name != 'hotspot_logout') return true;
+            open('$(link-login)', '_blank', '');
+            window.close();
+            return false;
+        }
+    </script>
+
+
+    <nav class="navbar navbar-default" style="opacity: 0;"></nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4 col-md-offset-4">
+                <div class="panel panel-default">
+                    <div class="panel-body text-center">
+
+                        <h1><span class="glyphicon glyphicon-user"></span></h1>
+
+                        <h3 id="user">$(username)</h3>
+
+                        <p>You have left the hotspot!</p>
+
+
+                        <table class="table table-striped table-bordered">
+                            <tbody>
+                                <tr>
+                                    <td class="text-center">IP Address</td>
+                                    <td class="text-center">$(ip)</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center">MAC Address</td>
+                                    <td class="text-center">$(mac)</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center">Total upload</td>
+                                    <td class="text-center">$(bytes-in-nice)</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center">Total download</td>
+                                    <td class="text-center">$(bytes-out-nice)</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center">Time used</td>
+                                    <td class="text-center">$(uptime)</td>
+                                </tr>
+                                $(if session-time-left)
+                                <tr>
+                                    <td class="text-center">Remaining time</td>
+                                    <td class="text-center">$(session-time-left)</td>
+                                </tr>
+                                $(endif)
+                                <tr>
+                                    <td class="text-center">Expiration Date</td>
+                                    <td class="text-center"><span id="exp"></span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <form action="$(link-login)" name="login" onSubmit="return openLogin()">
+                            <button class="button btn btn-success btn-lg btn-block" type="submit">Resume time</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="./assets/js/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="./assets/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript">
+        document.getElementById('title').innerHTML = window.location.hostname + " > logout";
+    </script>
+</body>
+
+</html>
