@@ -73,13 +73,11 @@
                             <input type="hidden" name="popup" value="true" />
 
                             <div class="form-group">
-                                <input class="form-control text-center" name="username" placeholder="Voucher"
-                                    type="tel" />
+                                <input class="form-control text-center" name="username" placeholder="Voucher" type="tel" value="" />
                             </div>
 
                             <div class="form-group">
-                                <input class="form-control text-center" name="password" placeholder="Password"
-                                    type="hidden" />
+                                <input class="form-control text-center" name="password" placeholder="Password" type="hidden" value="" />
                             </div>
 
                             <button class="btn btn-default btn-lg btn-block" type="submit">Login</button>
@@ -181,24 +179,14 @@
         // login page 2 mode by Laksamadi Guko
         var username = document.login.username;
         var password = document.login.password;
-
-        // username.placeholder = "Kode Voucher";
-
-        // set password = username
-        function setpass() {
-            var user = username.value
-            // user = user.toLowerCase();
-            username.value = user;
-            password.value = user;
-        }
-
         
         // change to voucher mode
         function voucher() {
-            username.onkeyup = setpass;
             username.placeholder = "Voucher";
+            username.value="";
             username.type = "tel";
             password.type = "hidden";
+            password.value="";
             infologin.innerHTML = "Enter the Voucher Code then click login.";
             username.focus();
 
@@ -207,6 +195,7 @@
         // change to account mode
         function account() {
             username.placeholder = "Username";
+            username.value="";
             username.onkeyup = "";
             username.type = "text";
             password.type = "password";
