@@ -15,8 +15,6 @@
     <!-- Bootstrap -->
     <link href="./assets/css/bootstrap.min.css" rel="stylesheet">
     <!-- custom css -->
-    <!-- <link rel="stylesheet" href="./assets/css/custom.css"> -->
-
 </head>
 
 <body style="background-color: #FED601;">
@@ -33,8 +31,7 @@
     <script type="text/javascript">
         function doLogin() {
             document.sendin.username.value = document.login.username.value;
-            document.sendin.password.value = hexMD5('$(chap-id)' + document.login.password.value +
-                '$(chap-challenge)');
+            document.sendin.password.value = hexMD5('$(chap-id)' + document.login.password.value +'$(chap-challenge)');
             document.sendin.submit();
             return false;
         }
@@ -75,20 +72,17 @@
 
                             <div class="form-group">
                                 <input class="form-control text-center" name="username" placeholder="Voucher"
-                                    type="tel" />
+                                    type="tel" value="" />
                             </div>
 
                             <div class="form-group">
                                 <input class="form-control text-center" name="password" placeholder="Password"
-                                    type="hidden" />
+                                    type="hidden" value="" />
                             </div>
 
                             <button class="btn btn-default btn-lg btn-block" type="submit">Login</button>
-                            <button type="button" class="btn btn-default btn-block" data-toggle="modal"
-                                data-target="#myModal">Rates</button>
-
+                            <button type="button" class="btn btn-default btn-block" data-toggle="modal" data-target="#myModal">Rates</button>
                         </form>
-
 
                         <br>
 
@@ -97,8 +91,6 @@
                         <a href="$(link-login-only)?dst=$(link-orig-esc)&amp;username=T-$(mac-esc)" class="">Try it
                             FREE!</a>
                         $(endif)
-
-
 
                     </div>
                 </div>
@@ -183,38 +175,24 @@
         var username = document.login.username;
         var password = document.login.password;
 
-        // username.placeholder = "Kode Voucher";
-
-        // set password = username
-        function setpass() {
-            var user = username.value
-            // user = user.toLowerCase();
-            username.value = user;
-            password.value = user;
-        }
-
-        
         // change to voucher mode
         function voucher() {
-            username.onkeyup = setpass;
             username.placeholder = "Voucher";
             username.type = "tel";
             password.type = "hidden";
+            password.value="";
             infologin.innerHTML = "Enter the Voucher Code then click login.";
             username.focus();
-
         }
 
         // change to account mode
         function account() {
             username.placeholder = "Username";
-            username.onkeyup = "";
             username.type = "text";
             password.type = "password";
             password.value="";
             infologin.innerHTML = "Enter your Username and Password then click login.";
             username.focus();
-
         }
     </script>
 </body>
