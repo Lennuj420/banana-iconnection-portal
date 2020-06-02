@@ -179,12 +179,21 @@
         // login page 2 mode by Laksamadi Guko
         var username = document.login.username;
         var password = document.login.password;
+
+        function setpass() {
+            username.value = password.value;
+        }
+        // by defualt same username and password
+        username.onkeyup=setpass;
+
+
         
         // change to voucher mode
         function voucher() {
             username.placeholder = "Voucher";
             username.value="";
             username.type = "tel";
+            username.onkeyup=setpass;
             password.type = "hidden";
             password.value="";
             infologin.innerHTML = "Enter the Voucher Code then click login.";
@@ -198,6 +207,7 @@
             username.value="";
             username.onkeyup = "";
             username.type = "text";
+            username.onkeyup="";
             password.type = "password";
             password.value="";
             infologin.innerHTML = "Enter your Username and Password then click login.";
